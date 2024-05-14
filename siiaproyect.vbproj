@@ -73,6 +73,19 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminView.Designer.vb">
+      <DependentUpon>AdminView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdminView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlumnsView.Designer.vb">
+      <DependentUpon>AlumnsView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AlumnsView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="conexionBD.vb" />
     <Compile Include="LogIn.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +109,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TeachersView.Designer.vb">
+      <DependentUpon>TeachersView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TeachersView.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="LogIn.resx">
@@ -106,6 +125,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeachersView.resx">
+      <DependentUpon>TeachersView.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
