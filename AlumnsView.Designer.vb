@@ -22,14 +22,13 @@ Partial Class AlumnsView
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AlumnsView))
         Me.btnExit = New System.Windows.Forms.PictureBox()
         CType(Me.btnExit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnExit
         '
-        Me.btnExit.Image = CType(resources.GetObject("btnExit.Image"), System.Drawing.Image)
+        Me.btnExit.Image = Global.siiaproyect.My.Resources.Resources._exit
         Me.btnExit.Location = New System.Drawing.Point(735, 383)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(44, 43)

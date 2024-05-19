@@ -86,6 +86,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="conexionBD.vb" />
+    <Compile Include="frmHorarios.Designer.vb">
+      <DependentUpon>frmHorarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHorarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LogIn.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RegistrarUsuarios.Designer.vb">
+      <DependentUpon>RegistrarUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TeachersView.Designer.vb">
       <DependentUpon>TeachersView.vb</DependentUpon>
     </Compile>
@@ -120,6 +132,12 @@
     <EmbeddedResource Include="AdminView.resx">
       <DependentUpon>AdminView.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AlumnsView.resx">
+      <DependentUpon>AlumnsView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHorarios.resx">
+      <DependentUpon>frmHorarios.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.vb</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +146,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarUsuarios.resx">
+      <DependentUpon>RegistrarUsuarios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TeachersView.resx">
       <DependentUpon>TeachersView.vb</DependentUpon>
@@ -144,6 +165,15 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\limpieza-de-datos2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\verificar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
