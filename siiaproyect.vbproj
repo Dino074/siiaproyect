@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCalif.Designer.vb">
+      <DependentUpon>AddCalif.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddCalif.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AdminView.Designer.vb">
       <DependentUpon>AdminView.vb</DependentUpon>
     </Compile>
@@ -85,6 +91,12 @@
     <Compile Include="AlumnsView.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CalifReprobatoria.Designer.vb">
+      <DependentUpon>CalifReprobatoria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CalifReprobatoria.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="conexionBD.vb" />
     <Compile Include="frmHorarios.Designer.vb">
       <DependentUpon>frmHorarios.vb</DependentUpon>
@@ -92,11 +104,35 @@
     <Compile Include="frmHorarios.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Kardex.Designer.vb">
+      <DependentUpon>Kardex.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Kardex.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LogIn.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LogIn.Designer.vb">
       <DependentUpon>LogIn.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaestroLibre.Designer.vb">
+      <DependentUpon>MaestroLibre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MaestroLibre.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaestroTiempos.Designer.vb">
+      <DependentUpon>MaestroTiempos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MaestroTiempos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Materias.Designer.vb">
+      <DependentUpon>Materias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Materias.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -115,10 +151,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Oportnidad.Designer.vb">
+      <DependentUpon>Oportnidad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Oportnidad.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RegistrarUsuarios.Designer.vb">
       <DependentUpon>RegistrarUsuarios.vb</DependentUpon>
     </Compile>
     <Compile Include="RegistrarUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reprobados.Designer.vb">
+      <DependentUpon>Reprobados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reprobados.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TeachersView.Designer.vb">
@@ -127,19 +175,43 @@
     <Compile Include="TeachersView.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vuelta.Designer.vb">
+      <DependentUpon>Vuelta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vuelta.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddCalif.resx">
+      <DependentUpon>AddCalif.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminView.resx">
       <DependentUpon>AdminView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AlumnsView.resx">
       <DependentUpon>AlumnsView.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CalifReprobatoria.resx">
+      <DependentUpon>CalifReprobatoria.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmHorarios.resx">
       <DependentUpon>frmHorarios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Kardex.resx">
+      <DependentUpon>Kardex.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaestroLibre.resx">
+      <DependentUpon>MaestroLibre.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaestroTiempos.resx">
+      <DependentUpon>MaestroTiempos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Materias.resx">
+      <DependentUpon>Materias.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -147,11 +219,20 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Oportnidad.resx">
+      <DependentUpon>Oportnidad.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegistrarUsuarios.resx">
       <DependentUpon>RegistrarUsuarios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reprobados.resx">
+      <DependentUpon>Reprobados.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TeachersView.resx">
       <DependentUpon>TeachersView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vuelta.resx">
+      <DependentUpon>Vuelta.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
