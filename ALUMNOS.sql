@@ -56,11 +56,17 @@ INSERT INTO persona VALUES (@ap_paterno, @ap_materno, @nombres, @correo, @contra
 END
 GO
 
-INSERT INTO persona VALUES ('Puente', 'Cruz', 'Emmanuel', 'emmanuel_cruz', 'manu21291', 1),
-('Chavana', 'Cazares', 'Cesar', 'cesar_chavana', 'chavana1234', 1),
-('Garcia', 'Montoya', 'Jahir', 'jahir_garcia', 'garcia1234', 3),
-('Ramos', 'Ruelas', 'Raul', 'raul_ramos', 'ramoss1234', 2)
+INSERT INTO persona (ap_paterno, ap_materno, nombres, correo, contrasenia, rol) VALUES 
+('Puente', 'Cruz', 'Emmanuel', 'emmanuel_cruz', 'manu21291', 3),  -- alumno
+('Chavana', 'Cazares', 'Cesar', 'cesar_chavana', 'chavana1234', 3), -- alumno
+('Garcia', 'Montoya', 'Jahir', 'jahir_garcia', 'garcia1234', 1), -- admin
+('Ramos', 'Ruelas', 'Raul', 'raul_ramos', 'ramoss1234', 2), -- maestro
+('Lopez', 'Hernandez', 'Lili', 'lili_lopez', 'lili123', 3), -- alumno
+('Martinez', 'Gomez', 'Lolo', 'lolo_martinez', 'lolo123', 3), -- alumno
+('Perez', 'Diaz', 'Pepe', 'pepe_perez', 'pepe123', 2); -- maestro
 GO
+
+
 
 CREATE TABLE materias(
 id_materia INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
@@ -135,47 +141,62 @@ id_kardex INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
 id_alumno INT FOREIGN KEY REFERENCES persona(id_persona),
 id_materia INT FOREIGN KEY REFERENCES materias(id_materia),
 calif DECIMAL NOT NULL,
+fecha DATE NOT NULL,
 id_maestro INT FOREIGN KEY REFERENCES persona(id_persona)
 );
 GO
 
 
 CREATE PROCEDURE ObtenerMaestroCalificacionReprobatoria
-    @nombre_alumno VARCHAR(MAX)
+     @id_alumno INT
 AS
 BEGIN
-    SELECT m.nombres AS NombreMaestro, m.ap_paterno, m.ap_materno, k.calif
+    SELECT 
+        CONCAT(m.nombres, ' ', m.ap_paterno, ' ', m.ap_materno) AS Maestro,
+        ma.nombre_materia AS Materia,
+        COUNT(k.calif) AS VecesReprobada
     FROM persona p
     JOIN kardex k ON p.id_persona = k.id_alumno
     JOIN persona m ON k.id_maestro = m.id_persona
-    WHERE p.nombres = @nombre_alumno AND k.calif < 6;
+    JOIN materias ma ON k.id_materia = ma.id_materia
+    WHERE p.id_persona = @id_alumno AND k.calif < 6
+    GROUP BY m.nombres, m.ap_paterno, m.ap_materno, ma.nombre_materia;
 END;
 GO
 
-CREATE PROCEDURE ObtenerAlumnoRepruebaDosMaterias
+
+CREATE PROCEDURE ObtenerAlumnoRepruebaNVeces
+    @num_reprobadas INT
 AS
 BEGIN
-    SELECT p.nombres, p.ap_paterno, p.ap_materno, COUNT(k.id_kardex) AS NumeroReprobadas
+    SELECT 
+        p.nombres, 
+        p.ap_paterno, 
+        p.ap_materno, 
+        m.nombre_materia AS Materia
     FROM persona p
     JOIN kardex k ON p.id_persona = k.id_alumno
+    JOIN materias m ON k.id_materia = m.id_materia
     WHERE k.calif < 6
-    GROUP BY p.nombres, p.ap_paterno, p.ap_materno
-    HAVING COUNT(k.id_kardex) >= 2;
+    GROUP BY p.nombres, p.ap_paterno, p.ap_materno, m.nombre_materia
+    HAVING COUNT(k.id_kardex) >= @num_reprobadas;
 END;
 GO
 
+
 CREATE PROCEDURE ObtenerOportunidadAprobarMateria
-    @nombre_alumno VARCHAR(MAX),
+    @id_alumno INT,
     @nombre_materia VARCHAR(MAX)
 AS
 BEGIN
-    SELECT k.id_kardex AS Oportunidad
+    SELECT COUNT(*) AS NumeroDeOportunidades
     FROM kardex k
     JOIN materias m ON k.id_materia = m.id_materia
     JOIN persona p ON k.id_alumno = p.id_persona
-    WHERE p.nombres = @nombre_alumno AND m.nombre_materia = @nombre_materia AND k.calif >= 6;
+    WHERE p.id_persona = @id_alumno AND m.nombre_materia = @nombre_materia;
 END;
 GO
+
 
 
 CREATE PROCEDURE ObtenerPromedioAlumno
@@ -192,25 +213,28 @@ CREATE PROCEDURE ObtenerMateriasImparteMaestro
     @nombre_maestro VARCHAR(MAX)
 AS
 BEGIN
-    SELECT m.nombre_materia
+    SELECT 
+        m.nombre_materia AS Materia,
+        m.semestre AS Semestre,
+        CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) AS NombreMaestro
     FROM curso cu
     JOIN materias m ON cu.id_materia = m.id_materia
     JOIN persona p ON cu.id_maestro = p.id_persona
-    WHERE p.nombres = @nombre_maestro;
+    WHERE @nombre_maestro IS NULL OR CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) LIKE '%' + @nombre_maestro + '%';
 END;
 GO
 
+
 CREATE PROCEDURE ObtenerSemestreConMasReprobadas
-    @nombre_alumno VARCHAR(MAX)
+    @id_alumno INT
 AS
 BEGIN
-    SELECT m.semestre, COUNT(k.id_kardex) AS NumeroReprobadas
+    SELECT m.semestre as Semestre, COUNT(k.id_kardex) AS 'Cantidad materia reprobadas'
     FROM kardex k
     JOIN materias m ON k.id_materia = m.id_materia
-    JOIN persona p ON k.id_alumno = p.id_persona
-    WHERE p.nombres = @nombre_alumno AND k.calif < 6
+    WHERE k.id_alumno = @id_alumno AND k.calif < 6
     GROUP BY m.semestre
-    ORDER BY NumeroReprobadas DESC;
+    ORDER BY 'Cantidad materia reprobadas' DESC;
 END;
 GO
 
@@ -220,11 +244,11 @@ AS
 BEGIN
     SELECT p.nombres, p.ap_paterno, p.ap_materno
     FROM persona p
-    WHERE p.rol = 1 AND p.id_persona NOT IN (
+    WHERE p.rol = 2 AND p.id_persona NOT IN (
         SELECT cu.id_maestro
         FROM curso cu
         JOIN materias m ON cu.id_materia = m.id_materia
-        WHERE m.semestre = @semestre_actual
+        WHERE m.semestre = 1
     );
 END;
 GO
@@ -249,7 +273,7 @@ AS
 BEGIN
     SELECT p.nombres, p.ap_paterno, p.ap_materno
     FROM persona p
-    WHERE p.rol = 1 AND p.id_persona NOT IN (
+    WHERE p.rol = 2 AND p.id_persona NOT IN (
         SELECT cu.id_maestro
         FROM curso cu
         JOIN sesiones s ON cu.id_cursos = s.id_curso
@@ -264,38 +288,137 @@ CREATE PROCEDURE ObtenerKardexAlumno
     @id_alumno INT
 AS
 BEGIN
-    SELECT m.nombre_materia, k.calif, k.id_kardex AS Oportunidad
+    SELECT k.id_kardex, p.id_persona AS Matricula, p.nombres + ' ' + p.ap_paterno + ' ' + p.ap_materno AS Alumno, 
+           m.nombre_materia AS Materia, k.calif AS Calif, k.fecha AS Fecha, 
+           maestro.nombres + ' ' + maestro.ap_paterno + ' ' + maestro.ap_materno AS Maestro
     FROM kardex k
     JOIN materias m ON k.id_materia = m.id_materia
-    WHERE k.id_alumno = @id_alumno;
+    JOIN persona p ON k.id_alumno = p.id_persona  
+    JOIN persona maestro ON k.id_maestro = maestro.id_persona
+    WHERE @id_alumno IS NULL OR k.id_alumno = @id_alumno;
 END;
 GO
+
+
 
 CREATE PROCEDURE ObtenerAlumnoQuintaOportunidad
 AS
 BEGIN
-    SELECT p.nombres, p.ap_paterno, p.ap_materno, k.id_materia, 
+    SELECT CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) AS Nombre, 
+           m.nombre_materia AS Materia, 
            COUNT(k.id_kardex) AS Oportunidad
     FROM kardex k
     JOIN persona p ON k.id_alumno = p.id_persona
-    GROUP BY p.nombres, p.ap_paterno, p.ap_materno, k.id_materia
+    JOIN materias m ON k.id_materia = m.id_materia
+    GROUP BY p.nombres, p.ap_paterno, p.ap_materno, m.nombre_materia
     HAVING COUNT(k.id_kardex) = 5;
 END;
 GO
 
-CREATE PROCEDURE CapturarCalificaciones
-    @id_kardex INT,
+
+CREATE PROCEDURE CapturarCalificacion
     @id_alumno INT,
-    @calificacion DECIMAL(4,2),
+    @id_materia INT,
+    @calif DECIMAL,
+    @fecha DATE,
     @id_maestro INT
 AS
 BEGIN
-    INSERT INTO kardex (id_kardex, id_alumno, calif, id_maestro)
-    VALUES (@id_kardex, @id_alumno, @calificacion, @id_maestro);
+    INSERT INTO kardex (id_alumno, id_materia, calif, fecha, id_maestro)
+    VALUES (@id_alumno, @id_materia, @calif, @fecha, @id_maestro);
 END;
 GO
 
 
 
+-- Insertar datos en la tabla carrera_persona
+INSERT INTO carrera_persona (id_persona, id_carrera) VALUES 
+(5, 1), -- Lili en Ingenieria En Sistemas Computacionales
+(6, 1), -- Lolo en Ingenieria En Sistemas Computacionales
+(7, 1), -- Pepe en Ingenieria En Sistemas Computacionales
+(4, 1); -- Raul en Ingenieria En Sistemas Computacionales
+GO
 
+INSERT INTO horas (start_at, end_at) VALUES 
+('08:00', '09:00'),
+('09:00', '10:00'),
+('10:00', '11:00');
+GO
+
+INSERT INTO dias (descripcion) VALUES 
+('Lunes'),
+('Martes'),
+('Miercoles');
+GO
+
+INSERT INTO curso (id_maestro, id_materia) VALUES 
+(4, 1),
+(4, 2),
+(4, 3),
+(4, 4),
+(7, 5),
+(7, 6);
+GO
+
+INSERT INTO curso_alumno (id_curso, id_persona) VALUES 
+(1, 3),
+(2, 3),
+(3, 4),
+(4, 4),
+(5, 5),
+(6, 5),
+(1, 6),
+(2, 6),
+(3, 6),
+(4, 6),
+(5, 6),
+(6, 6);
+GO
+
+INSERT INTO sesiones (id_curso, id_dia, id_hora) VALUES 
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 1),
+(4, 2, 2),
+(5, 3, 1),
+(6, 3, 2);
+GO
+
+-- Insertar datos en la tabla kardex con la columna fecha
+INSERT INTO kardex (id_alumno, id_materia, calif, fecha, id_maestro) VALUES 
+(5, 1, 5.0, '2022-01-15', 1), -- Lili, Programacion I, 5.0, Emmanuel
+(5, 2, 7.0, '2022-05-20', 1), -- Lili, Sistemas de Programacion, 7.0, Emmanuel
+(5, 3, 4.0, '2022-06-10', 2), -- Lili, Calculo Diferencial, 4.0, Cesar
+(5, 3, 6.0, '2023-01-20', 2), -- Lili, Calculo Diferencial, 6.0, Cesar (segunda oportunidad)
+(6, 6, 4.0, '2022-03-15', 7), -- Lolo, Fisica I, 4.0, Pepe
+(6, 6, 4.0, '2022-08-25', 7), -- Lolo, Fisica I, 4.0, Pepe (segunda oportunidad)
+(6, 6, 7.0, '2023-03-15', 7), -- Lolo, Fisica I, 7.0, Pepe (tercera oportunidad)
+(3, 1, 9.0, '2021-12-20', 1), -- Jahir, Programacion I, 9.0, Emmanuel
+(4, 3, 8.0, '2022-11-10', 2); -- Raul, Calculo Diferencial, 8.0, Cesar
+GO
+
+
+
+CREATE PROCEDURE BuscarAlumnosPorFiltros
+    @id_maestro INT,
+    @id_curso INT = NULL,
+    @nombre_alumno VARCHAR(MAX) = NULL,
+    @nombre_materia VARCHAR(MAX) = NULL,
+    @semestre INT = NULL
+AS
+BEGIN
+    SELECT p.id_persona AS 'Id Alumno', CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) AS Nombre, 
+           cu.id_cursos AS CursoID, 
+           m.id_materia AS 'Id Materia', m.nombre_materia AS Materia, 
+           m.semestre AS Semestre
+    FROM persona p
+    JOIN curso_alumno ca ON p.id_persona = ca.id_persona
+    JOIN curso cu ON ca.id_curso = cu.id_cursos
+    JOIN materias m ON cu.id_materia = m.id_materia
+    JOIN persona maestro ON cu.id_maestro = maestro.id_persona
+    WHERE maestro.id_persona = @id_maestro
+    AND (@nombre_alumno IS NULL OR CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) LIKE '%' + @nombre_alumno + '%')
+    AND (@nombre_materia IS NULL OR m.nombre_materia LIKE '%' + @nombre_materia + '%')
+    AND (@semestre IS NULL OR m.semestre = @semestre);
+END;
 

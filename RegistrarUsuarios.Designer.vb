@@ -47,41 +47,46 @@ Partial Class RegistrarUsuarios
         'txtNombres
         '
         Me.txtNombres.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.txtNombres.Location = New System.Drawing.Point(119, 18)
+        Me.txtNombres.Location = New System.Drawing.Point(94, 15)
+        Me.txtNombres.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNombres.Name = "txtNombres"
-        Me.txtNombres.Size = New System.Drawing.Size(512, 34)
+        Me.txtNombres.Size = New System.Drawing.Size(380, 29)
         Me.txtNombres.TabIndex = 0
         '
         'txtApp
         '
         Me.txtApp.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.txtApp.Location = New System.Drawing.Point(201, 71)
+        Me.txtApp.Location = New System.Drawing.Point(177, 58)
+        Me.txtApp.Margin = New System.Windows.Forms.Padding(2)
         Me.txtApp.Name = "txtApp"
-        Me.txtApp.Size = New System.Drawing.Size(430, 34)
+        Me.txtApp.Size = New System.Drawing.Size(298, 29)
         Me.txtApp.TabIndex = 1
         '
         'txtApm
         '
         Me.txtApm.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.txtApm.Location = New System.Drawing.Point(201, 124)
+        Me.txtApm.Location = New System.Drawing.Point(177, 101)
+        Me.txtApm.Margin = New System.Windows.Forms.Padding(2)
         Me.txtApm.Name = "txtApm"
-        Me.txtApm.Size = New System.Drawing.Size(430, 34)
+        Me.txtApm.Size = New System.Drawing.Size(298, 29)
         Me.txtApm.TabIndex = 3
         '
         'txtCorreo
         '
         Me.txtCorreo.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.txtCorreo.Location = New System.Drawing.Point(91, 180)
+        Me.txtCorreo.Location = New System.Drawing.Point(177, 146)
+        Me.txtCorreo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCorreo.Name = "txtCorreo"
-        Me.txtCorreo.Size = New System.Drawing.Size(540, 34)
+        Me.txtCorreo.Size = New System.Drawing.Size(297, 29)
         Me.txtCorreo.TabIndex = 4
         '
         'txtContrasenia
         '
         Me.txtContrasenia.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.txtContrasenia.Location = New System.Drawing.Point(138, 226)
+        Me.txtContrasenia.Location = New System.Drawing.Point(177, 184)
+        Me.txtContrasenia.Margin = New System.Windows.Forms.Padding(2)
         Me.txtContrasenia.Name = "txtContrasenia"
-        Me.txtContrasenia.Size = New System.Drawing.Size(493, 34)
+        Me.txtContrasenia.Size = New System.Drawing.Size(298, 29)
         Me.txtContrasenia.TabIndex = 5
         '
         'Label2
@@ -89,9 +94,10 @@ Partial Class RegistrarUsuarios
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.Label2.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label2.Location = New System.Drawing.Point(15, 74)
+        Me.Label2.Location = New System.Drawing.Point(37, 66)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(167, 28)
+        Me.Label2.Size = New System.Drawing.Size(136, 21)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Apellido Paterno:"
         '
@@ -100,9 +106,10 @@ Partial Class RegistrarUsuarios
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.Label5.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label5.Location = New System.Drawing.Point(12, 183)
+        Me.Label5.Location = New System.Drawing.Point(115, 155)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(73, 28)
+        Me.Label5.Size = New System.Drawing.Size(58, 21)
         Me.Label5.TabIndex = 10
         Me.Label5.Text = "Correo"
         '
@@ -111,9 +118,10 @@ Partial Class RegistrarUsuarios
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.Label6.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label6.Location = New System.Drawing.Point(15, 25)
+        Me.Label6.Location = New System.Drawing.Point(11, 20)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(98, 28)
+        Me.Label6.Size = New System.Drawing.Size(79, 21)
         Me.Label6.TabIndex = 11
         Me.Label6.Text = "Nombres:"
         '
@@ -122,9 +130,10 @@ Partial Class RegistrarUsuarios
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.Label1.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label1.Location = New System.Drawing.Point(12, 229)
+        Me.Label1.Location = New System.Drawing.Point(77, 192)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(120, 28)
+        Me.Label1.Size = New System.Drawing.Size(96, 21)
         Me.Label1.TabIndex = 12
         Me.Label1.Text = "Contraseña:"
         '
@@ -133,9 +142,10 @@ Partial Class RegistrarUsuarios
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.Label4.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label4.Location = New System.Drawing.Point(15, 127)
+        Me.Label4.Location = New System.Drawing.Point(33, 109)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(172, 28)
+        Me.Label4.Size = New System.Drawing.Size(140, 21)
         Me.Label4.TabIndex = 13
         Me.Label4.Text = "Apellido Materno:"
         '
@@ -145,9 +155,10 @@ Partial Class RegistrarUsuarios
         Me.cmbRol.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.cmbRol.FormattingEnabled = True
         Me.cmbRol.Items.AddRange(New Object() {"Coordinador", "Maestro", "Alumno"})
-        Me.cmbRol.Location = New System.Drawing.Point(66, 275)
+        Me.cmbRol.Location = New System.Drawing.Point(177, 223)
+        Me.cmbRol.Margin = New System.Windows.Forms.Padding(2)
         Me.cmbRol.Name = "cmbRol"
-        Me.cmbRol.Size = New System.Drawing.Size(565, 36)
+        Me.cmbRol.Size = New System.Drawing.Size(298, 29)
         Me.cmbRol.TabIndex = 14
         '
         'Label7
@@ -155,9 +166,10 @@ Partial Class RegistrarUsuarios
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.Label7.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label7.Location = New System.Drawing.Point(15, 278)
+        Me.Label7.Location = New System.Drawing.Point(135, 226)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(46, 28)
+        Me.Label7.Size = New System.Drawing.Size(38, 21)
         Me.Label7.TabIndex = 15
         Me.Label7.Text = "Rol:"
         '
@@ -165,9 +177,10 @@ Partial Class RegistrarUsuarios
         '
         Me.btnRegistrar.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.btnRegistrar.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnRegistrar.Location = New System.Drawing.Point(66, 420)
+        Me.btnRegistrar.Location = New System.Drawing.Point(164, 341)
+        Me.btnRegistrar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnRegistrar.Name = "btnRegistrar"
-        Me.btnRegistrar.Size = New System.Drawing.Size(176, 39)
+        Me.btnRegistrar.Size = New System.Drawing.Size(132, 32)
         Me.btnRegistrar.TabIndex = 16
         Me.btnRegistrar.Text = "Registrar"
         Me.btnRegistrar.UseVisualStyleBackColor = True
@@ -176,9 +189,10 @@ Partial Class RegistrarUsuarios
         '
         Me.btnLimpiar.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.btnLimpiar.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.btnLimpiar.Location = New System.Drawing.Point(298, 420)
+        Me.btnLimpiar.Location = New System.Drawing.Point(342, 341)
+        Me.btnLimpiar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnLimpiar.Name = "btnLimpiar"
-        Me.btnLimpiar.Size = New System.Drawing.Size(176, 39)
+        Me.btnLimpiar.Size = New System.Drawing.Size(132, 32)
         Me.btnLimpiar.TabIndex = 17
         Me.btnLimpiar.Text = "Limpiar"
         Me.btnLimpiar.UseVisualStyleBackColor = True
@@ -188,9 +202,10 @@ Partial Class RegistrarUsuarios
         Me.lblCarrera.AutoSize = True
         Me.lblCarrera.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.lblCarrera.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.lblCarrera.Location = New System.Drawing.Point(15, 325)
+        Me.lblCarrera.Location = New System.Drawing.Point(109, 268)
+        Me.lblCarrera.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblCarrera.Name = "lblCarrera"
-        Me.lblCarrera.Size = New System.Drawing.Size(81, 28)
+        Me.lblCarrera.Size = New System.Drawing.Size(64, 21)
         Me.lblCarrera.TabIndex = 18
         Me.lblCarrera.Text = "Carrera"
         Me.lblCarrera.Visible = False
@@ -200,9 +215,10 @@ Partial Class RegistrarUsuarios
         Me.cmbCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbCarrera.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.cmbCarrera.FormattingEnabled = True
-        Me.cmbCarrera.Location = New System.Drawing.Point(102, 322)
+        Me.cmbCarrera.Location = New System.Drawing.Point(177, 262)
+        Me.cmbCarrera.Margin = New System.Windows.Forms.Padding(2)
         Me.cmbCarrera.Name = "cmbCarrera"
-        Me.cmbCarrera.Size = New System.Drawing.Size(529, 36)
+        Me.cmbCarrera.Size = New System.Drawing.Size(297, 29)
         Me.cmbCarrera.TabIndex = 22
         Me.cmbCarrera.Visible = False
         '
@@ -210,9 +226,10 @@ Partial Class RegistrarUsuarios
         '
         Me.PictureBox2.Image = Global.siiaproyect.My.Resources.Resources.limpieza_de_datos2
         Me.PictureBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.PictureBox2.Location = New System.Drawing.Point(310, 525)
+        Me.PictureBox2.Location = New System.Drawing.Point(306, 341)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(40, 40)
+        Me.PictureBox2.Size = New System.Drawing.Size(32, 32)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox2.TabIndex = 21
         Me.PictureBox2.TabStop = False
@@ -221,7 +238,8 @@ Partial Class RegistrarUsuarios
         '
         Me.PictureBox1.Image = Global.siiaproyect.My.Resources.Resources.verificar
         Me.PictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.PictureBox1.Location = New System.Drawing.Point(16, 427)
+        Me.PictureBox1.Location = New System.Drawing.Point(128, 341)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(32, 32)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -230,9 +248,9 @@ Partial Class RegistrarUsuarios
         '
         'RegistrarUsuarios
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(643, 528)
+        Me.ClientSize = New System.Drawing.Size(492, 409)
         Me.Controls.Add(Me.cmbCarrera)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.lblCarrera)
@@ -252,7 +270,7 @@ Partial Class RegistrarUsuarios
         Me.Controls.Add(Me.txtNombres)
         Me.Controls.Add(Me.PictureBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "RegistrarUsuarios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "RegistrarUsuarios"

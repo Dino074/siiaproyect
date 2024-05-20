@@ -27,6 +27,7 @@ Partial Class AdminView
         Me.RegistrarUsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CrearHorariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnExit = New System.Windows.Forms.PictureBox()
+        Me.TiemposMaestrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.btnExit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -35,44 +36,53 @@ Partial Class AdminView
         '
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistrarUsuariosToolStripMenuItem, Me.CrearHorariosToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistrarUsuariosToolStripMenuItem, Me.CrearHorariosToolStripMenuItem, Me.TiemposMaestrosToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(655, 36)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
+        Me.MenuStrip1.Size = New System.Drawing.Size(491, 29)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'RegistrarUsuariosToolStripMenuItem
         '
         Me.RegistrarUsuariosToolStripMenuItem.Name = "RegistrarUsuariosToolStripMenuItem"
-        Me.RegistrarUsuariosToolStripMenuItem.Size = New System.Drawing.Size(190, 32)
+        Me.RegistrarUsuariosToolStripMenuItem.Size = New System.Drawing.Size(155, 25)
         Me.RegistrarUsuariosToolStripMenuItem.Text = "Registrar Usuarios"
         '
         'CrearHorariosToolStripMenuItem
         '
         Me.CrearHorariosToolStripMenuItem.Name = "CrearHorariosToolStripMenuItem"
-        Me.CrearHorariosToolStripMenuItem.Size = New System.Drawing.Size(159, 32)
+        Me.CrearHorariosToolStripMenuItem.Size = New System.Drawing.Size(128, 25)
         Me.CrearHorariosToolStripMenuItem.Text = "Crear Horarios"
         '
         'btnExit
         '
         Me.btnExit.Image = CType(resources.GetObject("btnExit.Image"), System.Drawing.Image)
-        Me.btnExit.Location = New System.Drawing.Point(599, 516)
+        Me.btnExit.Location = New System.Drawing.Point(449, 419)
+        Me.btnExit.Margin = New System.Windows.Forms.Padding(2)
         Me.btnExit.Name = "btnExit"
-        Me.btnExit.Size = New System.Drawing.Size(44, 43)
+        Me.btnExit.Size = New System.Drawing.Size(33, 35)
         Me.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnExit.TabIndex = 0
         Me.btnExit.TabStop = False
         '
+        'TiemposMaestrosToolStripMenuItem
+        '
+        Me.TiemposMaestrosToolStripMenuItem.Name = "TiemposMaestrosToolStripMenuItem"
+        Me.TiemposMaestrosToolStripMenuItem.Size = New System.Drawing.Size(153, 25)
+        Me.TiemposMaestrosToolStripMenuItem.Text = "Tiempos maestros"
+        '
         'AdminView
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(655, 571)
+        Me.ClientSize = New System.Drawing.Size(491, 464)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.MenuStrip1)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "AdminView"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AdminView"
@@ -88,4 +98,5 @@ Partial Class AdminView
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents RegistrarUsuariosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CrearHorariosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TiemposMaestrosToolStripMenuItem As ToolStripMenuItem
 End Class
