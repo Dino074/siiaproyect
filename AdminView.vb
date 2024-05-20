@@ -9,15 +9,17 @@
     End Sub
 
     Sub RegistrarUsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegistrarUsuariosToolStripMenuItem.Click
-        HorariosOpen.Visible = False
-        RegistroOpen.MdiParent = Me
-        RegistroOpen.Show()
+        frmHorarios.Close()
+        RegistrarUsuarios.Activate()
+        RegistrarUsuarios.MdiParent = Me
+        RegistrarUsuarios.Show()
     End Sub
 
     Sub CrearHorariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CrearHorariosToolStripMenuItem.Click
-        RegistroOpen.Visible = False
-        HorariosOpen.MdiParent = Me
-        HorariosOpen.Show()
+        RegistrarUsuarios.Close()
+        frmHorarios.Activate()
+        frmHorarios.MdiParent = Me
+        frmHorarios.Show()
     End Sub
 
     Private Sub TiemposMaestrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TiemposMaestrosToolStripMenuItem.Click
