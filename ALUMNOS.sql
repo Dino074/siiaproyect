@@ -9,6 +9,7 @@ id_carrera INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 carrera VARCHAR (MAX) NOT NULL
 );
 
+
 INSERT INTO carrera VALUES ('Ingenieria En Sistemas Computacionales'), 
 ('Ingenieria Mecanico Electrica'), 
 ('Ingenieria Biomedica'),
@@ -24,8 +25,15 @@ contrasenia VARCHAR(MAX) NOT NULL,
 rol SMALLINT NOT NULL
 );
 
-delete from persona where id_persona = 5
+INSERT INTO persona VALUES ('Perez', 'Gonzalez', 'Emmanuel', 'emmanuel_perez', 'perez1234', 2),
+('Estrada', 'Cazares', 'Cesar', 'cesar_estrada', 'estrada1234', 2),
+('Hernandez', 'Montoya', 'Jahir', 'jahir_hernandez', 'hdz1234', 2),
+('Cuevas', 'De La Fuente', 'Raul', 'raul_cuevas', 'cuevas1234', 2)
 
+select * from persona where rol =  2
+select * from materias where id_carr =  1
+insert into curso values (1008, 4)
+insert into curso values (1006, 1), (1006, 2), (1007, 5), (1008, 3)
 CREATE TABLE carrera_persona(
 id_persona INT FOREIGN KEY REFERENCES persona(id_persona),
 id_carrera INT FOREIGN KEY REFERENCES carrera(id_carrera)
@@ -58,11 +66,6 @@ AS BEGIN
 INSERT INTO persona VALUES (@ap_paterno, @ap_materno, @nombres, @correo, @contrasenia, @rol)
 END
 
-INSERT INTO persona VALUES ('Puente', 'Cruz', 'Emmanuel', 'emmanuel_cruz', 'manu21291', 1),
-('Chavana', 'Cazares', 'Cesar', 'cesar_chavana', 'chavana1234', 1),
-('Garcia', 'Montoya', 'Jahir', 'jahir_garcia', 'garcia1234', 3),
-('Ramos', 'Ruelas', 'Raul', 'raul_ramos', 'ramoss1234', 2)
-
 CREATE TABLE materias(
 id_materia INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 nombre_materia VARCHAR(MAX),
@@ -86,24 +89,32 @@ insert into materias values ('Programacion I', 5, 1, 1),
 ('Introduccion a la ingenieria', 3, 1, 3),
 ('Calculo Diferencial', 5, 1, 3),
 ('Quimica', 3, 1, 3),
-('Programacion I', 5, 1, 1),
-('Programacion I', 5, 1, 1),
-('Programacion I', 5, 1, 1),
-('Programacion I', 5, 1, 1),
-('Programacion I', 5, 1, 1),
-('Programacion I', 5, 1, 1),
-('Programacion I', 5, 1, 1),
-('Programacion I', 5, 1, 1)
+('Programacion I', 5, 1, 4),
+('Electronica Digital', 5, 1, 4),
+('Calculo Diferencial', 5, 1, 4),
+('Introduccion a la Ingenieria', 3, 1, 4),
+('Robots I', 3, 1, 4)
 
 CREATE TABLE horas(
 id_hora SMALLINT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 start_at time,
-end_at time
+end_at time,
+duracion smallint
 );
+
+insert into horas values (CAST ('07:00' AS TIME), CAST ('07:50' AS TIME), 1),
+(CAST ('07:50' AS TIME), CAST ('08:40' AS TIME), 1),
+(CAST ('08:40' AS TIME), CAST ('09:30' AS TIME), 1),
+(CAST ('10:00' AS TIME), CAST ('10:50' AS TIME), 1),
+(CAST ('10:50' AS TIME), CAST ('11:40' AS TIME), 1)
+
 CREATE TABLE dias(
 id_dia SMALLINT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 descripcion varchar(60),
 );
+
+INSERT INTO dias values ('Lunes'),('Martes'), ('Miercoles'), ('Jueves'), ('Viernes')
+
 CREATE TABLE curso(
 id_cursos INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 id_maestro INT FOREIGN KEY REFERENCES persona(id_persona),
@@ -120,3 +131,12 @@ id_dia SMALLINT FOREIGN KEY REFERENCES dias(id_dia),
 id_hora SMALLINT FOREIGN KEY REFERENCES horas(id_hora)
 );
 
+select * from persona where rol = 2
+
+select n.nombres, n.ap_paterno from persona as n, curso as c where n.id_persona = c.id_maestro and c.id_materia = 2
+
+select * from curso
+
+select * from materias
+
+select id_persona, nombres, ap_paterno, ap_materno from persona where rol = 2
