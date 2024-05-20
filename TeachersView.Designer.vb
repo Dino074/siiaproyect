@@ -28,6 +28,7 @@ Partial Class TeachersView
         Me.KardexToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReprobadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnExit = New System.Windows.Forms.PictureBox()
+        Me.AlumnoVueltaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.btnExit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -36,7 +37,7 @@ Partial Class TeachersView
         '
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CalificarToolStripMenuItem, Me.KardexToolStripMenuItem, Me.ReprobadosToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CalificarToolStripMenuItem, Me.KardexToolStripMenuItem, Me.ReprobadosToolStripMenuItem, Me.AlumnoVueltaToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
@@ -73,6 +74,12 @@ Partial Class TeachersView
         Me.btnExit.TabIndex = 1
         Me.btnExit.TabStop = False
         '
+        'AlumnoVueltaToolStripMenuItem
+        '
+        Me.AlumnoVueltaToolStripMenuItem.Name = "AlumnoVueltaToolStripMenuItem"
+        Me.AlumnoVueltaToolStripMenuItem.Size = New System.Drawing.Size(128, 25)
+        Me.AlumnoVueltaToolStripMenuItem.Text = "Alumno vuelta"
+        '
         'TeachersView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -82,7 +89,7 @@ Partial Class TeachersView
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.btnExit)
         Me.IsMdiContainer = True
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "TeachersView"
         Me.Text = "Teachers View"
         Me.MenuStrip1.ResumeLayout(False)
@@ -98,4 +105,5 @@ Partial Class TeachersView
     Friend WithEvents CalificarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents KardexToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReprobadosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AlumnoVueltaToolStripMenuItem As ToolStripMenuItem
 End Class

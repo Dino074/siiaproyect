@@ -117,6 +117,12 @@
       <DependentUpon>LogIn.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MaestroLibre.Designer.vb">
+      <DependentUpon>MaestroLibre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MaestroLibre.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MaestroTiempos.Designer.vb">
       <DependentUpon>MaestroTiempos.vb</DependentUpon>
     </Compile>
@@ -169,6 +175,12 @@
     <Compile Include="TeachersView.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vuelta.Designer.vb">
+      <DependentUpon>Vuelta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vuelta.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddCalif.resx">
@@ -191,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaestroLibre.resx">
+      <DependentUpon>MaestroLibre.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MaestroTiempos.resx">
       <DependentUpon>MaestroTiempos.vb</DependentUpon>
@@ -215,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TeachersView.resx">
       <DependentUpon>TeachersView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vuelta.resx">
+      <DependentUpon>Vuelta.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

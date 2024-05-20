@@ -170,9 +170,7 @@ CREATE PROCEDURE ObtenerAlumnoRepruebaNVeces
 AS
 BEGIN
     SELECT 
-        p.nombres, 
-        p.ap_paterno, 
-        p.ap_materno, 
+		CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) AS Alumno,
         m.nombre_materia AS Materia
     FROM persona p
     JOIN kardex k ON p.id_persona = k.id_alumno
@@ -216,7 +214,7 @@ BEGIN
     SELECT 
         m.nombre_materia AS Materia,
         m.semestre AS Semestre,
-        CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) AS NombreMaestro
+        CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) AS Maestro
     FROM curso cu
     JOIN materias m ON cu.id_materia = m.id_materia
     JOIN persona p ON cu.id_maestro = p.id_persona
@@ -242,7 +240,7 @@ CREATE PROCEDURE ObtenerMaestroSinClasesEsteSemestre
     @semestre_actual SMALLINT
 AS
 BEGIN
-    SELECT p.nombres, p.ap_paterno, p.ap_materno
+    SELECT CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) AS Maestro
     FROM persona p
     WHERE p.rol = 2 AND p.id_persona NOT IN (
         SELECT cu.id_maestro
@@ -256,7 +254,7 @@ GO
 CREATE PROCEDURE ObtenerMaestroConMasHorasClase
 AS
 BEGIN
-    SELECT p.nombres, p.ap_paterno, p.ap_materno, SUM(DATEDIFF(HOUR, h.start_at, h.end_at)) AS HorasClase
+    SELECT CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) AS Maestro, SUM(DATEDIFF(HOUR, h.start_at, h.end_at)) AS HorasClase
     FROM persona p
     JOIN curso cu ON p.id_persona = cu.id_maestro
     JOIN sesiones s ON cu.id_cursos = s.id_curso
@@ -271,7 +269,7 @@ CREATE PROCEDURE ObtenerMaestroLibreAHora
     @dia VARCHAR(MAX)
 AS
 BEGIN
-    SELECT p.nombres, p.ap_paterno, p.ap_materno
+    SELECT CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) AS Maestro
     FROM persona p
     WHERE p.rol = 2 AND p.id_persona NOT IN (
         SELECT cu.id_maestro
@@ -301,17 +299,19 @@ GO
 
 
 
-CREATE PROCEDURE ObtenerAlumnoQuintaOportunidad
+CREATE PROCEDURE ObtenerAlumnoOportunidad
+    @oportunidad INT
 AS
 BEGIN
-    SELECT CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) AS Nombre, 
-           m.nombre_materia AS Materia, 
-           COUNT(k.id_kardex) AS Oportunidad
+    SELECT 
+        CONCAT(p.nombres, ' ', p.ap_paterno, ' ', p.ap_materno) AS Alumno, 
+        m.nombre_materia AS Materia, 
+        COUNT(k.id_kardex) AS Oportunidad
     FROM kardex k
     JOIN persona p ON k.id_alumno = p.id_persona
     JOIN materias m ON k.id_materia = m.id_materia
     GROUP BY p.nombres, p.ap_paterno, p.ap_materno, m.nombre_materia
-    HAVING COUNT(k.id_kardex) = 5;
+    HAVING COUNT(k.id_kardex) = @oportunidad;
 END;
 GO
 
